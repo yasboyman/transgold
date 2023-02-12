@@ -1,7 +1,12 @@
 import React from "react";
+import Keypad from "../Keypad/Keypad";
 
 const SecondTab = () => {
-  return <div>Second tab content</div>;
+  return (
+    <div>
+      <Keypad />
+    </div>
+  );
 };
 
 export default SecondTab;

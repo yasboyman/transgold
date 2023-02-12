@@ -47,16 +47,16 @@ const CurrencyConverter: React.FC<Props> = () => {
     <div>
       <input type="number" value={amount} onChange={handleAmountChange} />
       <select value={fromCurrency} onChange={handleFromCurrencyChange}>
+        <option value="GBP">GBP</option>
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="UAE">UAE</option>
+        <option value="AED">UAE</option>
       </select>
       <select value={toCurrency} onChange={handleToCurrencyChange}>
         <option value="USD">USD</option>
+        <option value="AED">UAE</option>
         <option value="EUR">EUR</option>
         <option value="GBP">GBP</option>
-        <option value="UAE">UAE</option>
       </select>
       {convertedAmount !== null && (
         <h2>
