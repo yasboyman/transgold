@@ -1,8 +1,13 @@
+$bg-img: url('../../assets/bg-img.png');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+    background-image: url(assets/bg-img.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .logo {

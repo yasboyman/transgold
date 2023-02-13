@@ -4,6 +4,8 @@ import styles from "./keypad.module.scss";
 const Keypad = () => {
   const [displayValue, setDisplayValue] = useState("0");
 
+  console.log('display value', displayValue)
+
   const handleClick = (event) => {
     const value = event.target.value;
     switch (value) {
@@ -27,6 +29,10 @@ const Keypad = () => {
         break;
     }
   };
+
+    const evaluateExpression = (expression: number) => {
+        // ... implementation here ...
+    };
 
   return (
     <div className={styles.calculator}>

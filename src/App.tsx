@@ -1,7 +1,5 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-import CurrencyConverter from "./components/CurrencyConverter/CurrencyConverter";
+import "./App.scss";
 import Tabs from "./components/Tabs/Tabs";
 
 const App = () => {
@@ -20,6 +18,9 @@ const App = () => {
           numquam officiis unde voluptatibus? Expedita iure laborum officiis
           repellendus similique tenetur voluptate....
         </p>
+          <img
+              alt="United States"
+              src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"/>
       </div>
     </>
   );
