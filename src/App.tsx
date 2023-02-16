@@ -18,9 +18,6 @@ const App = () => {
           numquam officiis unde voluptatibus? Expedita iure laborum officiis
           repellendus similique tenetur voluptate....
         </p>
-          <img
-              alt="United States"
-              src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"/>
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CountryDropdown from "../CountryDropdown/CountryDropdown";
 
 interface ExchangeRate {
   [key: string]: number;
@@ -8,26 +9,28 @@ interface Props {}
 
 const CurrencyConverter: React.FC<Props> = () => {
   const [amount, setAmount] = useState<number>(0);
-  const [fromCurrency, setFromCurrency] = useState<string>("USD");
-  const [toCurrency, setToCurrency] = useState<string>("EUR");
+  const [fromCurrency, setFromCurrency] = useState<string>("AED");
+  const [toCurrency, setToCurrency] = useState<string>("GBP");
   const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
   const [rates, setRates] = useState<ExchangeRate>({});
 
+  console.log("from", fromCurrency);
+  console.log("to", toCurrency);
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(Number(event.target.value));
   };
 
-  const handleFromCurrencyChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setFromCurrency(event.target.value);
-  };
-
-  const handleToCurrencyChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setToCurrency(event.target.value);
-  };
+  // const handleFromCurrencyChange = (
+  //   event: React.ChangeEvent<HTMLSelectElement>
+  // ) => {
+  //   setFromCurrency(event.target.value);
+  // };
+  //
+  // const handleToCurrencyChange = (
+  //   event: React.ChangeEvent<HTMLSelectElement>
+  // ) => {
+  //   setToCurrency(event.target.value);
+  // };
 
   useEffect(() => {
     fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
@@ -46,18 +49,11 @@ const CurrencyConverter: React.FC<Props> = () => {
   return (
     <div>
       <input type="number" value={amount} onChange={handleAmountChange} />
-      <select value={fromCurrency} onChange={handleFromCurrencyChange}>
-        <option value="GBP">GBP</option>
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="AED">UAE</option>
-      </select>
-      <select value={toCurrency} onChange={handleToCurrencyChange}>
-        <option value="USD">USD</option>
-        <option value="AED">UAE</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-      </select>
+      <CountryDropdown
+        onChangeCallback={setFromCurrency}
+        value={fromCurrency}
+      />
+      <CountryDropdown onChangeCallback={setToCurrency} value={toCurrency} />
       {convertedAmount !== null && (
         <h2>
           {amount} {fromCurrency} is equal to {convertedAmount} {toCurrency}
