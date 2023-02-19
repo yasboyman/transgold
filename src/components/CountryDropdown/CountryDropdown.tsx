@@ -1,14 +1,18 @@
 import React from "react";
 import { countryData } from "../../country_data/CountryData";
 import styles from "./country_dropdown.module.scss";
-
-import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import {dropDownStyles, flagStyles} from "../../MaterialUIStyles";
 
-const CountryDropdown = ({ onChangeCallback, value }: any) => {
+type CountryDropdownProps = {
+    onChangeCallback: (value: string) => void;
+    value: string;
+};
+
+const CountryDropdown = ({ onChangeCallback, value }: CountryDropdownProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onChangeCallback(event.target.value);
   };
@@ -23,14 +27,14 @@ const CountryDropdown = ({ onChangeCallback, value }: any) => {
           value={value}
           label="Select a country"
           onChange={handleChange}
-          sx={{ backgroundColor: "whitesmoke" }}
+          sx={{dropDownStyles}}
         >
           {countryData.map((country) => (
             <MenuItem value={country.code}>
               <img
                 src={`https://purecatamphetamine.github.io/country-flag-icons/1x1/${country.flag}.svg`}
                 alt={`Flag of ${country.name}`}
-                style={{ height: "20px", width: "20px", marginRight: "0.5em" }}
+                 style={flagStyles}
               />
               {country.code} - {country.name}
             </MenuItem>

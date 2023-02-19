@@ -5,7 +5,6 @@ import CountryDropdown from "../CountryDropdown/CountryDropdown";
 const FirstTab = () => {
   return (
     <div>
-        <CountryDropdown/>
       <CurrencyConverter />
     </div>
   );

@@ -1,8 +1,13 @@
 .keypad {
-    max-width: 408px;
-    margin: 0 auto;
-    font-size: 32px;
-    button {
-      border-radius: 30px
-    }
+  max-width: 408px;
+  margin: 0 auto;
+  font-size: 32px;
+  button {
+    border-radius: 30px;
+  }
+}
+
+.no_content_image {
+  width: 100px;
+  height: 100px;
 }

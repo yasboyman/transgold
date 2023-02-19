@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CountryDropdown from "../CountryDropdown/CountryDropdown";
+import styles from "./currencyConverter.module.scss";
+import { Modal } from "@mui/material";
+import Box from "@mui/material/Box";
+import Keypad from "../Keypad/Keypad";
+import { ModalBoxStyles } from "../../MaterialUIStyles";
 
 interface ExchangeRate {
   [key: string]: number;
@@ -13,24 +18,7 @@ const CurrencyConverter: React.FC<Props> = () => {
   const [toCurrency, setToCurrency] = useState<string>("GBP");
   const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
   const [rates, setRates] = useState<ExchangeRate>({});
-
-  console.log("from", fromCurrency);
-  console.log("to", toCurrency);
-  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAmount(Number(event.target.value));
-  };
-
-  // const handleFromCurrencyChange = (
-  //   event: React.ChangeEvent<HTMLSelectElement>
-  // ) => {
-  //   setFromCurrency(event.target.value);
-  // };
-  //
-  // const handleToCurrencyChange = (
-  //   event: React.ChangeEvent<HTMLSelectElement>
-  // ) => {
-  //   setToCurrency(event.target.value);
-  // };
+  const [keypadModal, setKeypadModal] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
@@ -46,14 +34,42 @@ const CurrencyConverter: React.FC<Props> = () => {
     }
   }, [amount, toCurrency, rates]);
 
+  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAmount(Number(event.target.value.replace(/^0/, "")));
+  };
+
+  const handleClose = () => {
+    setKeypadModal(false);
+    setAmount(0);
+  };
+
   return (
     <div>
-      <input type="number" value={amount} onChange={handleAmountChange} />
-      <CountryDropdown
-        onChangeCallback={setFromCurrency}
-        value={fromCurrency}
+      <input
+        type="number"
+        value={amount}
+        onChange={handleAmountChange}
+        placeholder={"Please enter number"}
       />
-      <CountryDropdown onChangeCallback={setToCurrency} value={toCurrency} />
+      OR
+      <button onClick={() => setKeypadModal(true)}>Keypad</button>
+      <Modal
+        open={keypadModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={ModalBoxStyles}>
+          <Keypad />
+        </Box>
+      </Modal>
+      <section className={styles.country_selection}>
+        <CountryDropdown
+          onChangeCallback={setFromCurrency}
+          value={fromCurrency}
+        />
+        <CountryDropdown onChangeCallback={setToCurrency} value={toCurrency} />
+      </section>
       {convertedAmount !== null && (
         <h2>
           {amount} {fromCurrency} is equal to {convertedAmount} {toCurrency}
@@ -62,5 +78,4 @@ const CurrencyConverter: React.FC<Props> = () => {
     </div>
   );
 };
-
 export default CurrencyConverter;
