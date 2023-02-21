@@ -21,13 +21,13 @@ const Tabs = () => {
           className={activeTab === "tab1" ? styles.active : ""}
           onClick={handleTab1}
         >
-          Tab 1
+          Currency Converter
         </li>
         <li
           className={activeTab === "tab2" ? styles.active : ""}
           onClick={handleTab2}
         >
-          Tab 2
+          Gold Converter
         </li>
       </ul>
 

@@ -13,7 +13,7 @@ type CountryDropdownProps = {
 };
 
 const CountryDropdown = ({ onChangeCallback, value }: CountryDropdownProps) => {
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: SelectChangeEvent) => {
     onChangeCallback(event.target.value);
   };
 

@@ -1,23 +1,15 @@
-import React, {MouseEventHandler, useState} from "react";
+import React, { MouseEventHandler, useState } from "react";
 import styles from "./keypad.module.scss";
 import under_construction from "../../assets/under_construction.jpg";
 
 const Keypad = () => {
   const [displayValue, setDisplayValue] = useState("0");
 
-  const handleClick = (event) => {
-    const value = event.target.value;
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const { value } = event.target as HTMLButtonElement;
     switch (value) {
       case "clear":
         setDisplayValue("0");
-        break;
-      case "equal":
-        try {
-          const evalValue = eval(displayValue);
-          setDisplayValue(evalValue.toString());
-        } catch (error) {
-          setDisplayValue("Error");
-        }
         break;
       default:
         if (displayValue === "0") {
@@ -29,13 +21,8 @@ const Keypad = () => {
     }
   };
 
-
   return (
     <div className={styles.calculator}>
-      {/*<p>Please watch this space. we will be adding more content here in due course</p>*/}
-      {/*<section >*/}
-      {/*    <img src={under_construction} alt={'under construction icon'} className={styles.no_content_image}/>*/}
-      {/*</section>*/}
       <div className={styles.display}>{displayValue}</div>
       <div className={styles.keypad}>
         <button value="1" onClick={handleClick}>
@@ -74,8 +61,8 @@ const Keypad = () => {
         <button value="." onClick={handleClick}>
           .
         </button>
-        <button value="equal" onClick={handleClick}>
-          =
+        <button value="close" onClick={handleClick}>
+          X
         </button>
       </div>
     </div>

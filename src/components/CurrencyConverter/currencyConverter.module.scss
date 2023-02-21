@@ -1,4 +1,49 @@
+@import "./src/scss/helpers/mixins";
+
 .country_selection {
   display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 25px;
+  align-content: center;
+
+  .exchange_icons {
+    display: flex;
+    font-size: 40px;
+    justify-content: center;
+
+    @include lg-down {
+      transform: rotate(90deg);
+    }
+
+  }
+
+  @include lg-up {
+    flex-direction: row;
+  }
+}
+
+.input_section {
+  display: flex;
   flex-direction: row;
+  padding: 10px;
+  margin: 0 136px;
+  justify-content: center;
+
+  .keypadIcon {
+    font-size: 28px;
+  }
+
+  .input {
+    height: 30px;
+
+    @include md-up {
+      margin-left: 34px;
+      align-items: self-start;
+    }
+  }
+
+  @include md-up {
+    flex-direction: row;
+  }
 }

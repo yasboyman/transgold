@@ -4,7 +4,7 @@ import Keypad from "../Keypad/Keypad";
 const SecondTab = () => {
   return (
     <div>
-      <Keypad />
+        <p> We are working on this section. coming soon...</p>
     </div>
   );
 };

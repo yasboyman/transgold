@@ -1,3 +1,6 @@
+@import "./src/scss/helpers/mixins";
+
+
 $main-bg-color: #053742;
 $main-font-color: #e8f0f2;
 $tab-nav-border-color: #39a2db;
@@ -10,7 +13,7 @@ $tab-radius: 2rem;
 
 /* Tab Container */
 .Tabs {
-  width: 80%;
+  width: 60%;
   height: 491px;
   min-height: 400px;
   background: $main-bg-color;
@@ -18,9 +21,12 @@ $tab-radius: 2rem;
   padding: 2rem 1rem;
   color: $main-font-color;
   border-radius: $tab-radius;
-  @media (max-width: 769px) {
-    padding: 2rem 0;
+
+  @include lg-down {
+    width: 90%;
+    scroll-behavior: smooth;
   }
+  border: solid 1px red;
 }
 
 /* Tab Navigation */
@@ -32,8 +38,11 @@ ul.nav {
   justify-content: space-between;
   border: 1px solid $tab-nav-border-color;
   border-radius: $tab-radius;
+  padding: 0;
+
   @media (max-width: 768px) {
     width: 90%;
+    height: auto;
   }
 }
 ul.nav li {
