@@ -20,11 +20,13 @@ $tab-radius: 2rem;
   padding: 2rem 1rem;
   color: $main-font-color;
   border-radius: $tab-radius;
+  margin-top: 0;
 
   @include lg-down {
     width: 90%;
     scroll-behavior: smooth;
     height: auto;
+    margin-top: 0;
   }
 }
 
