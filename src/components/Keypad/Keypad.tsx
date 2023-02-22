@@ -3,7 +3,7 @@ import styles from "./keypad.module.scss";
 import under_construction from "../../assets/under_construction.jpg";
 import {AiFillCloseCircle, GiConfirmed} from "react-icons/all";
 
-const Keypad = ({callbackFnc, keypadClose}) => {
+const Keypad = ({callbackFnc, keypadClose}: any) => {
   const [displayValue, setDisplayValue] = useState("0");
   const [confirmSelected, setConfirmSelection] = useState(false);
 
