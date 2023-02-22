@@ -5,7 +5,7 @@ const App = () => {
   return (
     <>
       <div className="App">
-        <h1>Transactions</h1>
+        <h1>Transgold</h1>
         <div className="card">
           <Tabs />
         </div>

@@ -56,11 +56,9 @@ const CurrencyConverter: React.FC<Props> = () => {
           className={styles.input}
         />
 
-          <div className={styles.keypadIcon}>
-              <BsFillCalculatorFill onClick={() => setKeypadModal(true)}/>
-
-          </div>
-
+        <div className={styles.keypadIcon}>
+          <BsFillCalculatorFill onClick={() => setKeypadModal(true)} />
+        </div>
       </section>
       <Modal
         open={keypadModal}
@@ -69,7 +67,7 @@ const CurrencyConverter: React.FC<Props> = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={ModalBoxStyles}>
-          <Keypad />
+          <Keypad callbackFnc={setAmount} />
         </Box>
       </Modal>
       <section className={styles.country_selection}>
@@ -77,10 +75,10 @@ const CurrencyConverter: React.FC<Props> = () => {
           onChangeCallback={setFromCurrency}
           value={fromCurrency}
         />
-<div className={styles.exchange_icons}>
-    {/*<FcCurrencyExchange/>*/}
-    <CgArrowsExchangeAlt/>
-</div>
+        <div className={styles.exchange_icons}>
+          {/*<FcCurrencyExchange/>*/}
+          <CgArrowsExchangeAlt />
+        </div>
 
         <CountryDropdown onChangeCallback={setToCurrency} value={toCurrency} />
       </section>

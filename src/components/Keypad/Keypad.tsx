@@ -1,9 +1,14 @@
-import React, { MouseEventHandler, useState } from "react";
+import React, {MouseEventHandler, useEffect, useState} from "react";
 import styles from "./keypad.module.scss";
 import under_construction from "../../assets/under_construction.jpg";
+import {AiFillCloseCircle, GiConfirmed} from "react-icons/all";
 
-const Keypad = () => {
+const Keypad = ({callbackFnc}) => {
   const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect( () => {
+      callbackFnc(displayValue)
+  },[displayValue])
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { value } = event.target as HTMLButtonElement;
@@ -61,9 +66,12 @@ const Keypad = () => {
         <button value="." onClick={handleClick}>
           .
         </button>
-        <button value="close" onClick={handleClick}>
-          X
-        </button>
+          <section className={styles.keypad_icons}>
+              <AiFillCloseCircle />
+              <GiConfirmed />
+          </section>
+
+
       </div>
     </div>
   );
