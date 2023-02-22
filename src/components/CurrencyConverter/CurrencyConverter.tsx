@@ -20,6 +20,7 @@ const CurrencyConverter: React.FC<Props> = () => {
   const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
   const [rates, setRates] = useState<ExchangeRate>({});
   const [keypadModal, setKeypadModal] = useState<boolean>(false);
+  const [keypadModalComplete, setKeypadComplete] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
@@ -42,7 +43,7 @@ const CurrencyConverter: React.FC<Props> = () => {
 
   const handleClose = () => {
     setKeypadModal(false);
-    setAmount(0);
+    // setAmount(0);
   };
 
   return (
@@ -61,13 +62,13 @@ const CurrencyConverter: React.FC<Props> = () => {
         </div>
       </section>
       <Modal
-        open={keypadModal}
-        onClose={handleClose}
+        open={keypadModal || keypadModalComplete}
+        onClose={handleClose }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={ModalBoxStyles}>
-          <Keypad callbackFnc={setAmount} />
+          <Keypad callbackFnc={setAmount} keypadClose={setKeypadModal} />
         </Box>
       </Modal>
       <section className={styles.country_selection}>

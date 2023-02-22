@@ -3,12 +3,17 @@ import styles from "./keypad.module.scss";
 import under_construction from "../../assets/under_construction.jpg";
 import {AiFillCloseCircle, GiConfirmed} from "react-icons/all";
 
-const Keypad = ({callbackFnc}) => {
+const Keypad = ({callbackFnc, keypadClose}) => {
   const [displayValue, setDisplayValue] = useState("0");
+  const [confirmSelected, setConfirmSelection] = useState(false);
 
   useEffect( () => {
       callbackFnc(displayValue)
-  },[displayValue])
+
+      // setDisplayValue('0')
+      // setConfirmSelection(false)
+  },[confirmSelected])
+
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { value } = event.target as HTMLButtonElement;
@@ -25,6 +30,12 @@ const Keypad = ({callbackFnc}) => {
         break;
     }
   };
+
+  const handleConfirmClick = () => {
+      callbackFnc(displayValue)
+      setConfirmSelection(true)
+      keypadClose(false)
+  }
 
   return (
     <div className={styles.calculator}>
@@ -67,8 +78,8 @@ const Keypad = ({callbackFnc}) => {
           .
         </button>
           <section className={styles.keypad_icons}>
-              <AiFillCloseCircle />
-              <GiConfirmed />
+              <AiFillCloseCircle  color={'red'}/>
+              <GiConfirmed onClick={handleConfirmClick} color={'green'} />
           </section>
       </div>
     </div>
