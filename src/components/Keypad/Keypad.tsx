@@ -70,8 +70,6 @@ const Keypad = ({callbackFnc}) => {
               <AiFillCloseCircle />
               <GiConfirmed />
           </section>
-
-
       </div>
     </div>
   );
