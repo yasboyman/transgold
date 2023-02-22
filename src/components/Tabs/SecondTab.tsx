@@ -1,5 +1,4 @@
 import React from "react";
-import Keypad from "../Keypad/Keypad";
 import {IoIosConstruct} from "react-icons/all";
 
 const SecondTab = () => {
