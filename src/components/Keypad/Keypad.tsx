@@ -78,7 +78,7 @@ const Keypad = ({callbackFnc, keypadClose}: any) => {
           .
         </button>
           <section className={styles.keypad_icons}>
-              <AiFillCloseCircle  color={'red'}/>
+              <AiFillCloseCircle onClick={ () => setConfirmSelection(true)}  color={'red'}/>
               <GiConfirmed onClick={handleConfirmClick} color={'green'} />
           </section>
       </div>
