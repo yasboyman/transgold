@@ -9,7 +9,7 @@ export const ModalBoxStyles = {
   boxShadow: 24,
     borderRadius: "22px",
   p: 2,
-    '@media (max-width: 500px)': {
+    '@media (max-width: 400px)': {
         width: 300,
     }
 };
