@@ -5,7 +5,11 @@ import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import Keypad from "../Keypad/Keypad";
 import { ModalBoxStyles } from "../../MaterialUIStyles";
-import {BsFillCalculatorFill, CgArrowsExchangeAlt, FcCurrencyExchange} from "react-icons/all";
+import {
+  BsFillCalculatorFill,
+  CgArrowsExchangeAlt,
+  FcCurrencyExchange,
+} from "react-icons/all";
 
 interface ExchangeRate {
   [key: string]: number;
@@ -61,16 +65,20 @@ const CurrencyConverter: React.FC<Props> = () => {
           <BsFillCalculatorFill onClick={() => setKeypadModal(true)} />
         </div>
       </section>
-      <Modal
-        open={keypadModal || keypadModalComplete}
-        onClose={handleClose }
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={ModalBoxStyles}>
-          <Keypad callbackFnc={setAmount} keypadClose={setKeypadModal} />
-        </Box>
-      </Modal>
+
+      <div className={styles.modal}>
+        <Modal
+          open={keypadModal || keypadModalComplete}
+          onClose={handleClose}
+          aria-labelledby="modal-keypad"
+          aria-describedby="modal keypad"
+        >
+          <Box sx={ModalBoxStyles}>
+            <Keypad callbackFnc={setAmount} keypadClose={setKeypadModal} />
+          </Box>
+        </Modal>
+      </div>
+
       <section className={styles.country_selection}>
         <CountryDropdown
           onChangeCallback={setFromCurrency}

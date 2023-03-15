@@ -9,9 +9,6 @@ const Keypad = ({callbackFnc, keypadClose}: any) => {
 
   useEffect( () => {
       callbackFnc(displayValue)
-
-      // setDisplayValue('0')
-      // setConfirmSelection(false)
   },[confirmSelected])
 
 
@@ -30,6 +27,11 @@ const Keypad = ({callbackFnc, keypadClose}: any) => {
         break;
     }
   };
+
+    const handleCloseClick = () => {
+        setConfirmSelection(true)
+        keypadClose(false)
+    }
 
   const handleConfirmClick = () => {
       callbackFnc(displayValue)
@@ -78,7 +80,7 @@ const Keypad = ({callbackFnc, keypadClose}: any) => {
           .
         </button>
           <section className={styles.keypad_icons}>
-              <AiFillCloseCircle onClick={ () => setConfirmSelection(true)}  color={'red'}/>
+              <AiFillCloseCircle onClick={handleCloseClick}  color={'red'}/>
               <GiConfirmed onClick={handleConfirmClick} color={'green'} />
           </section>
       </div>
