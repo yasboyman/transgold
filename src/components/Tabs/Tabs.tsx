@@ -20,12 +20,14 @@ const Tabs = () => {
         <li
           className={activeTab === "tab1" ? styles.active : ""}
           onClick={handleTab1}
+          data-testid={'currencyTab'}
         >
           Currency Converter
         </li>
         <li
           className={activeTab === "tab2" ? styles.active : ""}
           onClick={handleTab2}
+          data-testid={'goldTab'}
         >
           Gold Converter
         </li>
