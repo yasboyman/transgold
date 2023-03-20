@@ -28,7 +28,8 @@ const CurrencyConverter: React.FC<Props> = () => {
   const [keypadModalComplete, setKeypadComplete] = useState<boolean>(false);
 
   useEffect(() => {
-    axios.get(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
+    axios
+      .get(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
       .then((response) => response.data)
       .then((data) => {
         setRates(data.rates);
