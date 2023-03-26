@@ -87,7 +87,6 @@ const CurrencyConverter: React.FC<Props> = () => {
           value={fromCurrency}
         />
         <div className={styles.exchange_icons}>
-          {/*<FcCurrencyExchange/>*/}
           <CgArrowsExchangeAlt />
         </div>
 
