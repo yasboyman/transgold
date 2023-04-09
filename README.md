@@ -2,7 +2,7 @@
 
 This project was initialised using Vite TypeScript
 
-Some vite testing has been added
+Some Vitest testing has been added
 
 NOTE: Project is not yet complete, but the Currency Exchange works fine
 
