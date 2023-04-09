@@ -13,7 +13,6 @@ describe("CountryDropdown", () => {
         const dropdownDiv = getByRole('button', { name: 'Country Flag of UAE Dirham AED - UAE Dirham' });
 
         expect(dropdownDiv).toBeInTheDocument();
-
     });
 
     // test("calls onChangeCallback when a new country is selected", () => {

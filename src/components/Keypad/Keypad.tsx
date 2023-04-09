@@ -1,6 +1,5 @@
-import React, {MouseEventHandler, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import styles from "./keypad.module.scss";
-import under_construction from "../../assets/under_construction.jpg";
 import {AiFillCloseCircle, GiConfirmed} from "react-icons/all";
 
 const Keypad = ({callbackFnc, keypadClose}: any) => {

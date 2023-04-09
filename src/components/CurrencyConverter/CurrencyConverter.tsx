@@ -8,7 +8,6 @@ import { ModalBoxStyles } from "../../MaterialUIStyles";
 import {
   BsFillCalculatorFill,
   CgArrowsExchangeAlt,
-  FcCurrencyExchange,
 } from "react-icons/all";
 import axios from "axios";
 
