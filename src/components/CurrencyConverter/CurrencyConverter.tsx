@@ -70,7 +70,6 @@ const CurrencyConverter: React.FC<Props> = () => {
 
   const handleClose = () => {
     setKeypadModal(false);
-    // setAmount(0);
   };
 
   return (
@@ -118,7 +117,7 @@ const CurrencyConverter: React.FC<Props> = () => {
         <input
           id="remember-checkbox"
           type="checkbox"
-          aria-labelledby='checkbox that remembers dropdown selection'
+          aria-labelledby="checkbox that remembers dropdown selection"
           checked={rememberValuesCheckbox}
           onChange={() => SetRememberValuesCheckbox(!rememberValuesCheckbox)}
         />
