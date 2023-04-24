@@ -5,11 +5,7 @@ import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import Keypad from "../Keypad/Keypad";
 import { ModalBoxStyles } from "../../MaterialUIStyles";
-import {
-  BsFillCalculatorFill,
-  CgArrowsExchangeAlt,
-  FcCurrencyExchange,
-} from "react-icons/all";
+import { BsFillCalculatorFill, CgArrowsExchangeAlt } from "react-icons/all";
 import axios from "axios";
 
 interface ExchangeRate {
@@ -26,6 +22,8 @@ const CurrencyConverter: React.FC<Props> = () => {
   const [rates, setRates] = useState<ExchangeRate>({});
   const [keypadModal, setKeypadModal] = useState<boolean>(false);
   const [keypadModalComplete, setKeypadComplete] = useState<boolean>(false);
+  const [rememberValuesCheckbox, SetRememberValuesCheckbox] =
+    useState<boolean>(false);
 
   useEffect(() => {
     axios
@@ -42,6 +40,29 @@ const CurrencyConverter: React.FC<Props> = () => {
       setConvertedAmount((amount * rates[toCurrency]).toFixed(2));
     }
   }, [amount, toCurrency, rates]);
+
+  const defaultFromCurrency = "UAE";
+  const defaultToCurrency = "GPB";
+
+  useEffect(() => {
+    const localStorageFromCurrency = localStorage.getItem("fromCurrency");
+    const localStorageToCurrency = localStorage.getItem("toCurrency");
+
+    if (localStorageFromCurrency && localStorageToCurrency) {
+      setFromCurrency(localStorageFromCurrency);
+      setToCurrency(localStorageToCurrency);
+    } else {
+      setFromCurrency(defaultFromCurrency);
+      setToCurrency(defaultToCurrency);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (rememberValuesCheckbox) {
+      localStorage.setItem("fromCurrency", fromCurrency);
+      localStorage.setItem("toCurrency", toCurrency);
+    }
+  }, [fromCurrency, toCurrency, rememberValuesCheckbox]);
 
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(Number(event.target.value.replace(/^0/, "")));
@@ -92,6 +113,15 @@ const CurrencyConverter: React.FC<Props> = () => {
 
         <CountryDropdown onChangeCallback={setToCurrency} value={toCurrency} />
       </section>
+      <div>
+        <label htmlFor="remember-checkbox"> Remember values </label>
+        <input
+          id="remember-checkbox"
+          type="checkbox"
+          checked={rememberValuesCheckbox}
+          onChange={() => SetRememberValuesCheckbox(!rememberValuesCheckbox)}
+        />
+      </div>
       {convertedAmount !== null && (
         <h2>
           {amount} {fromCurrency} is equal to {convertedAmount} {toCurrency}
