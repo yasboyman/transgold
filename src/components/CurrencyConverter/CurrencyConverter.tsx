@@ -41,8 +41,8 @@ const CurrencyConverter: React.FC<Props> = () => {
     }
   }, [amount, toCurrency, rates]);
 
-  const defaultFromCurrency = "UAE";
-  const defaultToCurrency = "GPB";
+  const defaultFromCurrency = "AED";
+  const defaultToCurrency = "GBP";
 
   useEffect(() => {
     const localStorageFromCurrency = localStorage.getItem("fromCurrency");
@@ -93,8 +93,8 @@ const CurrencyConverter: React.FC<Props> = () => {
         <Modal
           open={keypadModal || keypadModalComplete}
           onClose={handleClose}
-          aria-labelledby="modal-keypad"
-          aria-describedby="modal keypad"
+          aria-labelledby="keypad modal"
+          aria-describedby="keypad modal with numbers"
         >
           <Box sx={ModalBoxStyles}>
             <Keypad callbackFnc={setAmount} keypadClose={setKeypadModal} />
@@ -118,6 +118,7 @@ const CurrencyConverter: React.FC<Props> = () => {
         <input
           id="remember-checkbox"
           type="checkbox"
+          aria-labelledby='checkbox that remembers dropdown selection'
           checked={rememberValuesCheckbox}
           onChange={() => SetRememberValuesCheckbox(!rememberValuesCheckbox)}
         />

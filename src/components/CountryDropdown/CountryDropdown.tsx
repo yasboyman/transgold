@@ -31,7 +31,7 @@ const CountryDropdown = ({ onChangeCallback, value }: CountryDropdownProps) => {
           data-testid={"select_dropdown"}
         >
           {countryData.map((country) => (
-            <MenuItem value={country.code} data-testid={"option_dropdown"}>
+            <MenuItem value={country.code} data-testid={"option_dropdown"} key={country.code}>
               <img
                 src={`https://purecatamphetamine.github.io/country-flag-icons/1x1/${country.flag}.svg`}
                 alt={`Flag of ${country.name}`}
