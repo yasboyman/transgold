@@ -113,7 +113,7 @@ const CurrencyConverter: React.FC<Props> = () => {
         <CountryDropdown onChangeCallback={setToCurrency} value={toCurrency} />
       </section>
       <div>
-        <label htmlFor="remember-checkbox"> Remember values </label>
+        <label htmlFor="remember-checkbox">Remember values</label>
         <input
           id="remember-checkbox"
           type="checkbox"

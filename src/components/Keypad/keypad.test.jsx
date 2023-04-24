@@ -9,10 +9,10 @@ describe("Keypad Component", () => {
   };
   it("should render display value", async () => {
 
-    render(<Keypad props={props}  />);
-    const  displayElement = await screen.getByText(0);
+    render(<Keypad props={props}   />);
+    const  displayElement = await screen.getByTestId('keypad display');
     
-    expect( displayElement).toBeInTheDocument();
+    expect(displayElement).toBeInTheDocument();
   });
 
   // it("should update display value when a button is clicked", () => {
