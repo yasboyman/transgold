@@ -10,4 +10,5 @@ describe('App component', () => {
     const headingElement = screen.getByText(/Transgold/i);
     expect(headingElement).toBeInTheDocument();
   });
+  
 });

@@ -1,15 +1,14 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./keypad.module.scss";
-import {AiFillCloseCircle, GiConfirmed} from "react-icons/all";
+import { AiFillCloseCircle, GiConfirmed } from "react-icons/all";
 
-const Keypad = ({callbackFnc, keypadClose}: any) => {
+const Keypad = ({ callbackFnc, keypadClose }: any) => {
   const [displayValue, setDisplayValue] = useState("0");
   const [confirmSelected, setConfirmSelection] = useState(false);
 
-  useEffect( () => {
-      callbackFnc(displayValue)
-  },[confirmSelected])
-
+  useEffect(() => {
+    callbackFnc(displayValue);
+  }, [confirmSelected]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { value } = event.target as HTMLButtonElement;
@@ -27,20 +26,22 @@ const Keypad = ({callbackFnc, keypadClose}: any) => {
     }
   };
 
-    const handleCloseClick = () => {
-        setConfirmSelection(true)
-        keypadClose(false)
-    }
+  const handleCloseClick = () => {
+    setConfirmSelection(true);
+    keypadClose(false);
+  };
 
   const handleConfirmClick = () => {
-      callbackFnc(displayValue)
-      setConfirmSelection(true)
-      keypadClose(false)
-  }
+    callbackFnc(displayValue);
+    setConfirmSelection(true);
+    keypadClose(false);
+  };
 
   return (
     <div className={styles.calculator}>
-      <div className={styles.display}>{displayValue}</div>
+      <div className={styles.display} data-testid="keypad display">
+        {displayValue}
+      </div>
       <div className={styles.keypad}>
         <button value="1" onClick={handleClick}>
           1
@@ -78,10 +79,10 @@ const Keypad = ({callbackFnc, keypadClose}: any) => {
         <button value="." onClick={handleClick}>
           .
         </button>
-          <section className={styles.keypad_icons}>
-              <AiFillCloseCircle onClick={handleCloseClick}  color={'red'}/>
-              <GiConfirmed onClick={handleConfirmClick} color={'green'} />
-          </section>
+        <section className={styles.keypad_icons}>
+          <AiFillCloseCircle onClick={handleCloseClick} color={"red"} />
+          <GiConfirmed onClick={handleConfirmClick} color={"green"} />
+        </section>
       </div>
     </div>
   );
