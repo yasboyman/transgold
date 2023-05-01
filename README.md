@@ -2,7 +2,18 @@
 
 This project was initialised using Vite TypeScript
 
-Some Vitest testing has been added
+ - live currency exchange rate
+ 
+ - Keypad modal for mobile use
+
+ - some Vitest testing has been added
+
+
+
+# Live site:
+https://transgold.netlify.app/
+
+
 
 NOTE: Project is not yet complete, but the Currency Exchange works fine
 
