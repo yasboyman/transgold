@@ -1,5 +1,7 @@
 import "./App.scss";
 import Tabs from "./components/Tabs/Tabs";
+import CookieConsent from "react-cookie-consent";
+
 
 const App = () => {
   return (
@@ -9,6 +11,7 @@ const App = () => {
         <Tabs />
       </div>
       <p className="read-the-docs">Copyright © 2023 Yasboyman</p>
+        <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
     </div>
   );
 };
